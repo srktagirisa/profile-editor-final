@@ -1,0 +1,38 @@
+<div *ngIf="!this.displayEdit">
+  <p><b>Profile Editor</b></p>
+  <p><b>User Information</b></p>
+  <p><b>Name:</b>
+  {{user.name}}</p>
+  <p><b>Age:</b>
+  {{user.age}}</p>
+  <p><b>Favorite Color:</b>
+  {{user.favoriteColor}}</p>
+</div>
+
+<div *ngIf="this.displayEdit">
+  <form #editForm="ngForm" (ngSubmit)="saveChanges(editForm)">
+    <p>
+      <label for="name" class="input-label">Name:</label>
+      <input type="text" id="name" name="name" [(ngModel)]="formUser.name" />
+    </p>
+    <p>
+      <label class="input-label">Age:</label>
+      <label>
+        <input type="text" name="age" value="age" [(ngModel)]="formUser.age" />
+      </label>
+    </p>
+    <p>
+      <label class="input-label">Favorite Color:</label>
+      <label>
+        <input type="text" name="favoriteColor" value="favoriteColor" [(ngModel)]="formUser.favoriteColor" /> 
+      </label>
+    </p>
+    <p>
+      <button type="submit">Save Changes</button>
+    </p>
+  </form>
+</div>
+
+<div>
+<button type="button" (click)="toggleEdit()">Toggle Edit</button>
+</div>
